@@ -1,12 +1,19 @@
-from ..langchain_menu_generator.secret_key import anthropic_api_key
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 
-# Prefer an existing environment variable (for CI/production). Only set it from the local secret when missing.
-if not os.getenv("ANTHROPIC_API_KEY"):
-    os.environ["ANTHROPIC_API_KEY"] = anthropic_api_key
+# Load environment variables from .env file
+env_path = Path(__file__).parent.parent.parent / '.env'
+load_dotenv(env_path)
+
+# Get API key from environment
+anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 
 # Do NOT print the raw key in notebooks or logs. Instead print a confirmation that it's set.
-print("ANTHROPIC_API_KEY set?", bool(os.getenv("ANTHROPIC_API_KEY")))
+print("ANTHROPIC_API_KEY set?", bool(anthropic_api_key))
+
+if not anthropic_api_key:
+    raise ValueError("ANTHROPIC_API_KEY not found in environment variables. Please set it in the .env file.")
 
 from langchain_anthropic import ChatAnthropic
 

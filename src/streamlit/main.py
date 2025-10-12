@@ -1,5 +1,11 @@
 import streamlit as st
-from .langchain_helper import generate_resturant_name_n_items
+import sys
+from pathlib import Path
+
+# Add the current directory to sys.path for imports
+sys.path.insert(0, str(Path(__file__).parent))
+
+from langchain_helper import generate_resturant_name_n_items
 
 st.title("Resturant Name Generator")
 
@@ -11,7 +17,7 @@ if country:
     st.header(response['resturant_name'].strip())
     
     st.write("**Menu Items**")
-    menu_items = response['items'].split(",").strip()
+    menu_items = response['menu_items'].strip().split(",")
 
     for item in menu_items:
         st.write("-", item)
