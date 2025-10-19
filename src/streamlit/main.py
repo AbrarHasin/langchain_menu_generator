@@ -9,15 +9,15 @@ from langchain_helper import generate_resturant_name_n_items
 
 st.title("Resturant Name Generator")
 
-country = st.sidebar.selectbox("Pick a Country name for Resturant Name", ("India", "Saudi Arabia", "Mexico", "America", "Bangladesh", "Pakistan", "Afganistan"))
+country = st.sidebar.text_input("Enter a Country name for Resturant Name")
 
 if country:
-    response = generate_resturant_name_n_items(country)\
+    response = generate_resturant_name_n_items(country)
     
     st.header(response['resturant_name'].strip())
     
-    st.write("**Menu Items**")
-    menu_items = response['menu_items'].strip().split(",")
+    # st.write("**Menu Items**")
+    # menu_items = response['menu_items'].strip().split(",")
 
-    for item in menu_items:
-        st.write("-", item)
+    # for item in menu_items:
+    #     st.write("-", item)
