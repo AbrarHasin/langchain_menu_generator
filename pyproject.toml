@@ -1,29 +1,22 @@
-[project]
+[tool.poetry]
 name = "langchain-menu-generator"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "AbrarHasin",email = "abrarhasinpranto@gmail.com"}
-]
+authors = ["AbrarHasin <abrarhasinpranto@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "python-dotenv (>=1.1.1,<2.0.0)"
-]
-
-[tool.poetry]
 packages = [{include = "langchain_menu_generator", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+python-dotenv = "^1.1.1"
+langgraph = "^1.0.0"
+langchain = "^0.3"
+langchain-core = "^0.3"
+langchain-anthropic = "^0.3.21"
+streamlit = "^1.50.0"
+jupyter = "^1.1.1"
+ipykernel = "^6.29.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-
-[tool.poetry.dependencies]
-python = ">=3.12,<4.0"
-langchain = ">=0.3,<0.4"
-langchain-core = ">=0.3,<0.4"
-jupyter = "^1.1.1"
-ipykernel = "^6.29.0"
-langchain-anthropic = ">=0.3.21"
-streamlit = "<=1.50.0"
